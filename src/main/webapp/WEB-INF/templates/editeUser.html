@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>edite user</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class ="container">
+    <h1>Editer un utilisateur</h1>
+    <form th:action="@{/update}" th:object="${edituser}" method="POST">
+        <input type="hidden" th:field="*{id_user}" th:value="${edituser.id_user}"  name="id" />
+        <div>
+            <label>Nom : </label> <input type="text" th:field="*{last_name}" th:value="${edituser.last_name}" name="nom"  class="form-control mb-2 col-4"/>
+        </div>
+        <br>
+        <div>
+            <label>Prenom : </label> <input type="text" th:field="*{first_name}" th:value="${edituser.first_name}" name="prenom" class="form-control mb-2 col-4"/>
+        </div>
+        <br>
+        <div>
+            <label>Email : </label> <input type="text" th:field="*{email}" th:value="${edituser.email}" name="email" class="form-control mb-2 col-4"/>
+        </div>
+        <br>
+        <div>
+            <label>Role : </label>
+            <input hidden th:value="${edituser.getRole().getId_role()}" name="role">
+            <div class="form-check">
+                <input th:checked="${edituser.getRole().getId_role()== 2}" disabled id ="admin" value="2" type="radio" class=" form-check-input mb-2"/>
+                <label class="form-check-label" for="admin">admin</label>
+            </div>
+            <div class="form-check">
+                <input th:checked="${edituser.getRole().getId_role()== 1}" disabled id ="employer" value="1" type="radio" class=" form-check-input mb-2"/>
+                <label class="form-check-label" for="employer">employer</label>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Editer</button>
+    </form>
+</div>
+</body>
+</html>

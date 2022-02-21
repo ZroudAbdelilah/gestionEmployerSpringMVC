@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+<h2>La liste des utilisateurs : </h2>
+<br>
+<table class="table">
+    <a th:href="@{/new}"><button type="submit" class="btn btn-primary m-3">Ajouter</button></a>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <th th:text="${user.id_user}"></th>
+        <td th:text="${user.first_name}"></td>
+        <td th:text="${user.last_name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.role.name}"></td>
+        <td>
+            <a th:href="@{edit(id=${user.id_user})}" class="btn btn-warning">Edit</a>
+            <a th:href="@{delete(id=${user.id_user})}" class="btn btn-danger">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
