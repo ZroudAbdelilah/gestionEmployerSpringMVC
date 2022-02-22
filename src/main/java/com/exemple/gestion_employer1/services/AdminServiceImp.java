@@ -23,7 +23,7 @@ public class AdminServiceImp implements ServiceInt<AdminEntity> {
     }
 
     @Override
-    public AdminEntity Find(long id) {
+    public AdminEntity find(long id) {
         return adminDaoImp.find(id);
     }
 

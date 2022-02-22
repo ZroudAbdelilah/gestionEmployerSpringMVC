@@ -20,7 +20,7 @@ public class EmployerServiceImp implements ServiceInt<EmployerEntity> {
     }
 
     @Override
-    public EmployerEntity Find(long id) {
+    public EmployerEntity find(long id) {
         return employerDaoImp.find(id);
     }
 
