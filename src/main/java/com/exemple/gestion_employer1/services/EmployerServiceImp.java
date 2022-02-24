@@ -5,6 +5,7 @@ import com.exemple.gestion_employer1.entity.EmployerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -24,9 +25,10 @@ public class EmployerServiceImp implements ServiceInt<EmployerEntity> {
         return employerDaoImp.find(id);
     }
 
-    @Override
+    @Transactional
     public List<EmployerEntity> getAll() {
-        return employerDaoImp.getAll();
+        List<EmployerEntity> employers = employerDaoImp.getAll();
+        return employers;
     }
 
     @Override

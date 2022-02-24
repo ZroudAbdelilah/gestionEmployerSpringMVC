@@ -11,13 +11,14 @@ import java.util.List;
 @Repository
 public class AdminDaoImp implements DAOInt<AdminEntity> {
     private AdminEntity admin;
-    Session session = HSessionFactory.getInstance().getSession().openSession();
+
     @Autowired
     public AdminDaoImp(AdminEntity admin){
         this.admin = admin;
     }
     @Override
     public AdminEntity add(AdminEntity admin){
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         admin.setId_user((long)session.save(admin));
         session.getTransaction().commit();
@@ -26,6 +27,7 @@ public class AdminDaoImp implements DAOInt<AdminEntity> {
     }
     @Override
     public AdminEntity find(long id){
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         AdminEntity admin = session.find(AdminEntity.class,id);
         session.close();
@@ -33,6 +35,7 @@ public class AdminDaoImp implements DAOInt<AdminEntity> {
     }
     @Override
     public List<AdminEntity> getAll(){
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         List<AdminEntity> admins = session.createCriteria(AdminEntity.class).list();
         session.close();
@@ -40,6 +43,7 @@ public class AdminDaoImp implements DAOInt<AdminEntity> {
     }
     @Override
     public  AdminEntity update(AdminEntity admin){
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         session.merge(admin);
         session.getTransaction().commit();
@@ -48,10 +52,12 @@ public class AdminDaoImp implements DAOInt<AdminEntity> {
     }
     @Override
     public boolean delete(long id){
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         AdminEntity admin = session.find(AdminEntity.class,id);
         session.delete(admin);
         session.getTransaction().commit();
+        session.close();
         return true;
     }
 

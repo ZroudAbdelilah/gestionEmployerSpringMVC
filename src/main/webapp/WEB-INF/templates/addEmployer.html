@@ -11,13 +11,13 @@
     <form th:action="@{/insert}" th:object="${employer}" method="post">
         <div>
             <label>Nom : </label> <input type="text"
-                                         th:field="*{first_name}"
+                                         th:field="*{last_name}"
                                          name="nom"
                                          class="form-control mb-2 col-4"/>
         </div>
         <br>
         <div>
-            <label>Prenom : </label> <input type="text" th:field="*{last_name}" name="prenom" class="form-control mb-2 col-4"/>
+            <label>Prenom : </label> <input type="text" th:field="*{first_name}" name="prenom" class="form-control mb-2 col-4"/>
         </div>
         <br>
         <div>

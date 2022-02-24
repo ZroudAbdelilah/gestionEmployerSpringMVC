@@ -9,10 +9,11 @@ import java.util.List;
 
 @Repository
 public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
-    Session session = HSessionFactory.getInstance().getSession().openSession();
+
 
     @Override
     public EmployerEntity add(EmployerEntity employer) {
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         session.save(employer);
         session.beginTransaction().commit();
@@ -23,6 +24,7 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
 
     @Override
     public EmployerEntity find(long id) {
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         EmployerEntity employer = session.find(EmployerEntity.class,id);
         session.close();
@@ -31,14 +33,16 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
 
     @Override
     public List<EmployerEntity> getAll() {
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         List<EmployerEntity> employers = session.createCriteria(EmployerEntity.class).list();
-
+        session.close();
         return employers;
     }
 
     @Override
     public EmployerEntity update(EmployerEntity employer) {
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         session.load(EmployerEntity.class,employer.getId_user());
         session.close();
@@ -47,6 +51,7 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
 
     @Override
     public boolean delete(long id) {
+        Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         EmployerEntity employer =session.find(EmployerEntity.class,id);
         session.delete(employer);
