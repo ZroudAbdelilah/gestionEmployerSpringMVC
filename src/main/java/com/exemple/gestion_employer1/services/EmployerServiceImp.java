@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class EmployerServiceImp implements ServiceInt<EmployerEntity> {
     private EmployerDaoImp employerDaoImp;
     @Autowired
@@ -25,10 +26,11 @@ public class EmployerServiceImp implements ServiceInt<EmployerEntity> {
         return employerDaoImp.find(id);
     }
 
-    @Transactional
+    @Override
     public List<EmployerEntity> getAll() {
-        List<EmployerEntity> employers = employerDaoImp.getAll();
-        return employers;
+//        List<EmployerEntity> employers = employerDaoImp.getAll();
+//        return employers;
+        return employerDaoImp.getAll();
     }
 
     @Override

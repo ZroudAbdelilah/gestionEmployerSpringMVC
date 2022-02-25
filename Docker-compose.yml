@@ -1,7 +1,7 @@
 services:
   employer:
     build: .
-    container_name: gestion_employer
+    container_name: gestion_employer1
     ports:
       - 8008:8080
   db:

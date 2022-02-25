@@ -4,11 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gestion_employertest</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mvcspring</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
-        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.show_sql">true</property>
+
+
 
         <!-- property name="connection.driver_class">com.mysql.jdbc.Driver</property -->
         <!--        <property name="connection.url">jdbc:mysql://localhost/hibernate_examples</property>-->
@@ -20,6 +22,7 @@
         <!--&lt;!&ndash;        <property name="show_sql">true</property>&ndash;&gt;-->
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
+
         <mapping class="com.exemple.gestion_employer1.entity.UserEntity"/>
         <mapping class="com.exemple.gestion_employer1.entity.EmployerEntity"/>
         <mapping class="com.exemple.gestion_employer1.entity.AdminEntity"/>

@@ -18,11 +18,10 @@ public class AdminDaoImp implements DAOInt<AdminEntity> {
     }
     @Override
     public AdminEntity add(AdminEntity admin){
-        Session session = HSessionFactory.getInstance().getSession().openSession();
+        Session session = HSessionFactory.getInstance().getSession().getCurrentSession();
         session.beginTransaction();
         admin.setId_user((long)session.save(admin));
         session.getTransaction().commit();
-        session.close();
         return admin;
     }
     @Override

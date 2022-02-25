@@ -21,15 +21,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user : ${users}">
+    <tr th:each="user : ${employers}">
         <th th:text="${user.id_user}"></th>
         <td th:text="${user.first_name}"></td>
         <td th:text="${user.last_name}"></td>
         <td th:text="${user.email}"></td>
         <td th:text="${user.role.name}"></td>
         <td>
-            <a th:href="@{edit(id=${user.id_user})}" class="btn btn-warning">Edit</a>
-            <a th:href="@{delete(id=${user.id_user})}" class="btn btn-danger">Supprimer</a>
+            <a th:href="@{edit/{id_user}( id_user = ${user.id_user})}" class="btn btn-warning">Edit</a>
+            <a th:href="@{delete/{id_user}( id_user = ${user.id_user})}" class="btn btn-danger">Supprimer</a>
         </td>
     </tr>
     </tbody>

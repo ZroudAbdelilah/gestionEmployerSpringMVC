@@ -1,6 +1,7 @@
 package com.exemple.gestion_employer1.entity;
 
 
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;

@@ -32,15 +32,15 @@ public class EmployerEntity extends UserEntity {
 
     @Override
     public void setId_user(Long id_user) {
+        super.setId_user(id_user);
         this.id_user = id_user;
     }
 
 
     @Override
     public String toString() {
-        return "EmployerEntity{" +
+        return super.toString()+"EmployerEntity{" +
                 "id_user=" + id_user +
-
                 '}';
     }
 }

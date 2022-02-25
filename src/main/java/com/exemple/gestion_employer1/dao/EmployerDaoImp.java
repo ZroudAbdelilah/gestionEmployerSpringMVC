@@ -13,12 +13,12 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
 
     @Override
     public EmployerEntity add(EmployerEntity employer) {
+        System.out.println(employer);
         Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         session.save(employer);
-        session.beginTransaction().commit();
+        session.getTransaction().commit();
         session.close();
-
         return employer;
     }
 
@@ -27,16 +27,19 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
         Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         EmployerEntity employer = session.find(EmployerEntity.class,id);
+        session.getTransaction().commit();
         session.close();
         return employer;
     }
 
     @Override
     public List<EmployerEntity> getAll() {
-        Session session = HSessionFactory.getInstance().getSession().openSession();
-        session.beginTransaction();
-        List<EmployerEntity> employers = session.createCriteria(EmployerEntity.class).list();
-        session.close();
+        List<EmployerEntity> employers  = HSessionFactory.getInstance().getSession().openSession().createCriteria(EmployerEntity.class).list();
+//        session.beginTransaction();
+//        List<EmployerEntity> employers = session.createCriteria(EmployerEntity.class).list();
+//        session.close();
+        System.out.println("select all "+ toString());
+
         return employers;
     }
 
@@ -45,6 +48,8 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
         Session session = HSessionFactory.getInstance().getSession().openSession();
         session.beginTransaction();
         session.load(EmployerEntity.class,employer.getId_user());
+        session.merge(employer);
+        session.getTransaction().commit();
         session.close();
         return employer;
     }
@@ -55,6 +60,7 @@ public class EmployerDaoImp implements  DAOInt<EmployerEntity> {
         session.beginTransaction();
         EmployerEntity employer =session.find(EmployerEntity.class,id);
         session.delete(employer);
+        session.getTransaction().commit();
         session.close();
         return true;
     }
