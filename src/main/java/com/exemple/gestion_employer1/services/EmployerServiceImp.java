@@ -1,5 +1,6 @@
 package com.exemple.gestion_employer1.services;
 
+import com.exemple.gestion_employer1.dao.AdminRepoInt;
 import com.exemple.gestion_employer1.dao.EmployerDaoImp;
 import com.exemple.gestion_employer1.entity.EmployerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 @Transactional
 public class EmployerServiceImp implements ServiceInt<EmployerEntity> {
     private EmployerDaoImp employerDaoImp;
+
+    @Autowired
+    private AdminRepoInt adminRepoInt;
     @Autowired
     public EmployerServiceImp(EmployerDaoImp employerDaoImp){
         this.employerDaoImp = employerDaoImp;
@@ -42,4 +46,15 @@ public class EmployerServiceImp implements ServiceInt<EmployerEntity> {
     public boolean delete(long id) {
         return employerDaoImp.delete(id);
     }
+    @Transactional
+    public boolean islogged(String email, String password) throws Exception {
+        if(adminRepoInt.validate(email,password)) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
 }

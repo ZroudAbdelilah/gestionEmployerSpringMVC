@@ -8,7 +8,7 @@
 <body>
 <div class ="container">
     <h1>Ajouter un utilisateur </h1>
-    <form th:action="@{/insert}" th:object="${employer}" method="post">
+    <form th:action="@{/admin/insert}" th:object="${employer}" method="post">
         <div>
             <label>Nom : </label> <input type="text"
                                          th:field="*{last_name}"

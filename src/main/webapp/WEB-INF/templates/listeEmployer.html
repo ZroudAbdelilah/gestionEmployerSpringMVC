@@ -9,7 +9,7 @@
 <h2>La liste des utilisateurs : </h2>
 <br>
 <table class="table">
-    <a th:href="@{/new}"><button type="submit" class="btn btn-primary m-3">Ajouter</button></a>
+    <a th:href="@{/admin/new}"><button type="submit" class="btn btn-primary m-3">Ajouter</button></a>
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -28,8 +28,8 @@
         <td th:text="${user.email}"></td>
         <td th:text="${user.role.name}"></td>
         <td>
-            <a th:href="@{edit/{id_user}( id_user = ${user.id_user})}" class="btn btn-warning">Edit</a>
-            <a th:href="@{delete/{id_user}( id_user = ${user.id_user})}" class="btn btn-danger">Supprimer</a>
+            <a th:href="@{/admin/edit/{id_user}( id_user = ${user.id_user})}" class="btn btn-warning">Edit</a>
+            <a th:href="@{/admin/delete/{id_user}( id_user = ${user.id_user})}" class="btn btn-danger">Supprimer</a>
         </td>
     </tr>
     </tbody>
