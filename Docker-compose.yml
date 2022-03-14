@@ -1,0 +1,24 @@
+services:
+  employer:
+    build: .
+    container_name: gestion_employer1
+    ports:
+      - 8008:8080
+  db:
+    image: mysql:8.0.28
+    container_name: mysql
+    ports:
+      - 3301:3306
+    #    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 'test'
+      MYSQL_USER: 'abdo'
+      MYSQL_PASSWORD: 'abdo'
+      MYSQL_DATABASE: 'gestion_employertest'
+    volumes:
+      - ./backup/db:/var/lib/mysql
+  admir:
+    image: adminer
+    ports:
+      - 4242:8080
+
