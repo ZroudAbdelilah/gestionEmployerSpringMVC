@@ -50,6 +50,7 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
     }
+    // add config session factory spring jpa
 
 
 }

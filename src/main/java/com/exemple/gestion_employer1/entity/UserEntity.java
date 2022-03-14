@@ -1,10 +1,12 @@
 package com.exemple.gestion_employer1.entity;
 
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 @Component
 @Entity
@@ -22,6 +24,7 @@ public class UserEntity implements Serializable {
     private String last_name;
 
     @Column(name = "email")
+
     private String email;
 
     @Column(name = "password")

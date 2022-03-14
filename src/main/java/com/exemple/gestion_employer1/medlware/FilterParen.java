@@ -1,4 +1,4 @@
-package com.exemple.gestion_employer1.controller;
+package com.exemple.gestion_employer1.medlware;
 
 import org.springframework.stereotype.Controller;
 
