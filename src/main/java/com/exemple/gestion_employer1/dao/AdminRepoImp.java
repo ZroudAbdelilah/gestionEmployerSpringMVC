@@ -1,18 +1,22 @@
 package com.exemple.gestion_employer1.dao;
 
 import com.exemple.gestion_employer1.entity.AdminEntity;
-import com.exemple.gestion_employer1.hibernate.HSessionFactory;
+
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class AdminRepoImp implements AdminRepoInt{
+    @Autowired
+    private SessionFactory sessionFactory;
     @Override
     public boolean validate(String email, String password) {
         Transaction transaction = null;
         AdminEntity admin = null;
-        try (Session session = HSessionFactory.getInstance().getSession().openSession()) {
+        try (Session session = sessionFactory.getCurrentSession();) {
             // start a transaction
             transaction = session.beginTransaction();
             // get an user object
